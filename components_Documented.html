@@ -1,1 +1,395 @@
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <!--
+    Die viewport-Meta sorgt dafür, dass die Seite auf mobilen Geräten
+    bei 100% Zoom startet und sich responsiv verhält (Mobile-First-Grundlage).
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OnePager – Lernvorlage (Dark, dokumentiert)</title>
+
+  <!--
+    Webfont: „Inter“ ist eine moderne, gut lesbare Sans-Serif-Schrift.
+    Sie ist breit unterstützt und eignet sich für UI & Fließtext.
+  -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!--
+    Externe CSS-Datei. Trennung von Struktur (HTML) und Präsentation (CSS)
+    ist Best Practice. Du kannst diese Datei später austauschen/erweitern.
+  -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!--
+    A11y/Barrierefreiheit: Ein Skip-Link ermöglicht Keyboard-Nutzer*innen,
+    direkt zum Hauptinhalt zu springen, ohne die Navigation mehrfach zu tabben.
+    Der Link wird erst sichtbar, wenn er fokussiert wird (siehe CSS).
+  -->
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- =========================================================
+       HEADER (Sticky Navigation, semantisches <header>)
+       - Bleibt beim Scrollen oben („position: sticky“ im CSS)
+       - Links: Brand (Logo + Markenname)
+       - Rechts: Navigation (Ankerlinks) mit mobilem Hamburger
+    ========================================================= -->
+  <header id="top" class="site-header">
+    <div class="container header-inner">
+      <!--
+        BRAND:
+        - Ein einfacher, runder Logo-Marker (CSS-Verlauf) als Platzhalter.
+        - „Ihre Marke“ kann durch ein echtes Logo-Bild ersetzt werden.
+        - <a> verlinkt auf #top (Seitenanfang).
+      -->
+      <a class="brand" href="#top" aria-label="Startseite">
+        <span class="logo-mark">◎</span>
+        <span class="logo-text">Ihre&nbsp;Marke</span>
+      </a>
+
+      <!--
+        H1 genau hier:
+        - In vielen Onepagern bleibt das Hauptthema/Namen im Header.
+        - Für SEO kann man alternativ eine H1 im Hero nutzen. Hier im Header
+          hält es die visuelle Struktur klar (Logo + Titel nebeneinander).
+      -->
+      <h1 class="site-title">Moderner OnePager</h1>
+
+      <!--
+        NAVIGATION:
+        - Semantisches <nav> mit aria-label für Screenreader.
+        - Reines HTML/CSS-Hamburger-Menü (Checkbox-Hack): kein JS nötig.
+        - Auf kleinen Screens: Dropdown; ab 768px: horizontale Liste.
+      -->
+        <nav class="main-nav" aria-label="Hauptnavigation">
+          <!-- Checkbox steuert Sichtbarkeit des Menüs (CSS nutzt :checked) -->
+          <input id="nav-toggle" type="checkbox" class="nav-toggle" aria-label="Menü öffnen/schließen">
+          <!-- Label ist der sichtbare Hamburger-Button -->
+          <label for="nav-toggle" class="nav-toggle-btn" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </label>
+
+          <!--
+            UL mit Ankerlinks:
+            - Jeder Link springt in eine Sektion mit passender ID.
+            - Smooth-Scroll wird im CSS über „scroll-behavior: smooth“ aktiviert.
+          -->
+          <ul class="nav-list">
+            <li><a href="#hero">Hero</a></li>
+            <li><a href="#grid">Leistungen</a></li>
+            <li><a href="#video">Video</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+    </div>
+  </header>
+
+  <!--
+    Der Hauptinhalt wird semantisch mit <main> ausgezeichnet.
+    Der Skip-Link zielt hierher. Innerhalb folgen mehrere <section>-Blöcke.
+  -->
+  <main id="main">
+
+    <!-- =========================================================
+         HERO / SLIDER (CSS-only)
+         Ziel:
+         - Große Bildfläche (Atmosphäre)
+         - Text-Overlay mit Call-to-Action
+         - Slider ohne JS (über Radio-Inputs + CSS)
+         Hinweise:
+         - „checked“-Zustand eines Radio-Buttons blendet die passende Folie ein.
+         - Dots steuern die Radios über Labels (for="s1" etc.).
+      ========================================================= -->
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <!--
+          Radios: „name=slide“ gruppiert sie. Nur eines kann aktiv sein.
+          „checked“ auf #s1 zeigt beim Laden die erste Folie.
+        -->
+        <input type="radio" name="slide" id="s1" checked>
+        <input type="radio" name="slide" id="s2">
+        <input type="radio" name="slide" id="s3">
+
+        <!--
+          Slides:
+          - figure.slide enthält jeweils ein Bild.
+          - picsum.photos liefert leichtgewichtige Platzhalter.
+          - CSS blendet immer genau 1 Slide per Opacity ein.
+        -->
+        <div class="slides">
+          <figure class="slide">
+            <img src="https://picsum.photos/1600/900?random=11" alt="Hero Bild 1 – Platzhalter" />
+          </figure>
+          <figure class="slide">
+            <img src="https://picsum.photos/1600/900?random=12" alt="Hero Bild 2 – Platzhalter" />
+          </figure>
+          <figure class="slide">
+            <img src="https://picsum.photos/1600/900?random=13" alt="Hero Bild 3 – Platzhalter" />
+          </figure>
+        </div>
+
+        <!--
+          Overlay:
+          - Zentrale Message über dem Bild (Position: absolute, grid center).
+          - Button verlinkt ins Grid (#grid) als logische User Journey.
+        -->
+        <div class="hero-caption">
+          <h2>Klare Botschaft. Starker Auftritt.</h2>
+          <p>Diese Vorlage zeigt Best Practices: Semantik, Responsivität, Typografie & Abstände.</p>
+          <a class="btn" href="#grid">Jetzt entdecken</a>
+        </div>
+
+        <!--
+          Dots:
+          - Drei kleine Labels, die den Radios zugeordnet sind.
+          - Klick auf einen Dot „aktiviert“ den zugehörigen Radio → anderer Slide.
+        -->
+        <div class="hero-dots" aria-label="Hero-Slider-Steuerung">
+          <label for="s1" title="Slide 1"></label>
+          <label for="s2" title="Slide 2"></label>
+          <label for="s3" title="Slide 3"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CONTENT-GRID (2 Reihen x 3 Spalten)
+         Ziel:
+         - Übersicht: 6 Karten (Bild + kurzer Text + Link)
+         Responsiv:
+         - 1 Spalte auf Mobil
+         - 2 Spalten ab 700px
+         - 3 Spalten ab 1024px
+      ========================================================= -->
+    <section id="grid" class="section section-alt">
+      <div class="container">
+        <header class="section-head">
+          <h2>Leistungen im Überblick</h2>
+          <p>Sechs Kacheln – ideal für Features, Produkte oder Services.</p>
+        </header>
+
+        <!--
+          Die .grid-Klasse setzt CSS Grid. Breakpoints kommen im CSS per media queries.
+        -->
+        <div class="grid">
+          <!--
+            Jede Karte ist ein eigenständiger Artikel (semantisch sinnvoll).
+            Struktur: Bild + Body (Titel, Text, Link).
+          -->
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=21" alt="Feature 1" />
+            <div class="card-body">
+              <h3>Feature Eins</h3>
+              <p>Kurz und klar. Platz für Ihren Nutzen.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=22" alt="Feature 2" />
+            <div class="card-body">
+              <h3>Feature Zwei</h3>
+              <p>Mobile-first Grid mit moderner Typografie.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=23" alt="Feature 3" />
+            <div class="card-body">
+              <h3>Feature Drei</h3>
+              <p>Ein kurzer Anwendungsfall oder Vorteil.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=24" alt="Feature 4" />
+            <div class="card-body">
+              <h3>Feature Vier</h3>
+              <p>Einheitlicher Look dank Variablen.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=25" alt="Feature 5" />
+            <div class="card-body">
+              <h3>Feature Fünf</h3>
+              <p>Skaliert vom Smartphone bis Desktop.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=26" alt="Feature 6" />
+            <div class="card-body">
+              <h3>Feature Sechs</h3>
+              <p>Saubere HTML5-Semantik inklusive.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIDEO-SEKTION (YouTube iFrame)
+         - 16:9-Wrapper per CSS „aspect-ratio“
+         - „loading=lazy“ verbessert Performance
+      ========================================================= -->
+    <section id="video" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>Imagefilm / Video</h2>
+          <p>Ersetzen Sie später einfach den Link im iFrame.</p>
+        </header>
+
+        <!--
+          .video setzt den responsiven Rahmen. iFrame füllt ihn vollständig aus.
+        -->
+        <div class="video">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="YouTube Video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TEAM-SEKTION (3 Mitglieder)
+         - Wiederverwendbare Card-Struktur
+         - Rolle optisch hervorgehoben (Akzentfarbe)
+      ========================================================= -->
+    <section id="team" class="section section-alt">
+      <div class="container">
+        <header class="section-head">
+          <h2>Unser Team</h2>
+          <p>Kurz vorgestellt – Name, Rolle, Beschreibung.</p>
+        </header>
+
+        <!--
+          .team ist ein Grid mit 1 Spalte mobil, 3 Spalten ab 700px.
+        -->
+        <div class="team">
+          <article class="team-card">
+            <img src="https://picsum.photos/400/400?random=31" alt="Teammitglied 1" />
+            <div class="team-body">
+              <h3>Alex Müller</h3>
+              <p class="role">Projektleitung</p>
+              <p>Koordiniert Abläufe und hält Deadlines im Blick.</p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <img src="https://picsum.photos/400/400?random=32" alt="Teammitglied 2" />
+            <div class="team-body">
+              <h3>Sam Schneider</h3>
+              <p class="role">Design & UX</p>
+              <p>Sorgt für Markenbild und gutes Nutzererlebnis.</p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <img src="https://picsum.photos/400/400?random=33" alt="Teammitglied 3" />
+            <div class="team-body">
+              <h3>Robin Fischer</h3>
+              <p class="role">Entwicklung</p>
+              <p>Setzt schnelle, robuste Frontends um.</p>
+            </div>
+
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         KONTAKT-FORMULAR
+         - Minimalistisch: Name, E-Mail, Nachricht
+         - Ohne Backend (action="#" als Platzhalter)
+         - Labels verbessern A11y; required erzwingt Eingaben
+      ========================================================= -->
+    <section id="kontakt" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>Kontakt</h2>
+          <p>Schreiben Sie uns – wir melden uns rasch.</p>
+        </header>
+
+        <!--
+          .contact nutzt ein einfaches Grid für gleichmäßige Abstände.
+          Mit echten Projekten würden Sie serverseitige Validierung ergänzen.
+        -->
+        <form class="contact" action="#" method="post">
+          <label class="field">
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Ihr Name" autocomplete="name" required>
+          </label>
+
+          <label class="field">
+            <span>E-Mail</span>
+            <input type="email" name="email" placeholder="name@beispiel.de" autocomplete="email" required>
+          </label>
+
+          <label class="field">
+            <span>Nachricht</span>
+            <textarea name="message" rows="6" placeholder="Ihre Nachricht …" required></textarea>
+          </label>
+
+          <!--
+            Primärer Call-to-Action:
+            - Deutlicher, farbiger Button mit hoher Kontrastwirkung.
+          -->
+          <button class="btn" type="submit">Nachricht senden</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       - Wiederholt Navigation (Ankerlinks) für schnelles Springen
+       - Rechtliches als Platzhalter (Impressum/Datenschutz)
+    ========================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <nav class="footer-nav" aria-label="Fußnavigation">
+        <!--
+          Gleiche .nav-list-Klasse wie oben → Wiederverwendbarkeit.
+          Im Footer wird sie im CSS als horizontale Liste gesetzt.
+        -->
+        <ul class="nav-list">
+          <li><a href="#hero">Hero</a></li>
+          <li><a href="#grid">Leistungen</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <ul class="legal">
+        <li><a href="https://example.com/impressum" target="_blank" rel="noopener">Impressum</a></li>
+        <li><a href="https://example.com/datenschutz" target="_blank" rel="noopener">Datenschutz</a></li>
+      </ul>
+
+      <!--
+        Kleine UX-Spielerei: Jahreszahl per Mini-Script.
+        Kein Muss; kann man weglassen oder serverseitig setzen.
+      -->
+      <p class="copy">© <span id="year"></span> Ihre Marke</p>
+    </div>
+  </footer>
+
+  <script>
+    // Setzt die aktuelle Jahreszahl ins Footer-Element.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
