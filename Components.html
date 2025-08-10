@@ -1,1 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OnePager – Prüfungs-Vorlage</title>
+
+  <!-- Webfont (Google Fonts): modernes, klares Sans-Serif -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Externes CSS (siehe Block ②) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fallback für Nutzer*innen mit reduzierter Bewegung -->
+  <meta name="color-scheme" content="light dark">
+</head>
+<body>
+  <!-- =========================================================
+       SKIP-LINK (Barrierefreiheit): direkt zum Inhalt springen
+  ========================================================== -->
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- =========================================================
+       HEADER (Navigation) – sticky/fixed am oberen Viewport
+       Enthält: Logo (links), große Überschrift, Navigation (rechts)
+  ========================================================== -->
+  <header id="top" class="site-header">
+    <div class="container header-inner">
+      <!-- LOGO + SEITENTITEL -->
+      <div class="brand">
+        <!-- Platzhalter-Logo: kann später durch echtes Logo ersetzt werden -->
+        <a class="logo" href="#top" aria-label="Startseite">
+          <!-- Einfache Logo-Form als Text; später gerne Bild nutzen -->
+          <span class="logo-mark">◎</span>
+          <span class="logo-text">Ihre Marke</span>
+        </a>
+        <!-- Große Überschrift direkt neben dem Logo -->
+        <h1 class="site-title">Moderner OnePager</h1>
+      </div>
+
+      <!-- NAVIGATION mit Ankerlinks -->
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <!-- MOBILE: Hamburger-Checkbox für reines HTML/CSS-Toggle -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menü öffnen/schließen">
+        <label for="nav-toggle" class="nav-toggle-btn" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </label>
+
+        <ul class="nav-list">
+          <li><a href="#hero">Hero</a></li>
+          <li><a href="#grid">Leistungen</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       HAUPTINHALT
+  ========================================================== -->
+  <main id="main">
+
+    <!-- =======================================================
+         HERO / SLIDER (ohne JS – reine HTML/CSS-Lösung)
+         - 3 Slides mit Platzhalterbildern (picsum.photos)
+         - Text-Overlay + Button
+         - Auto-Slide via CSS-Animation; manuell via Dots (Radio)
+    ======================================================== -->
+    <section id="hero" class="hero">
+      <div class="hero-inner container">
+        <!-- Radio-Inputs steuern die sichtbare Folie (nur CSS) -->
+        <input type="radio" name="slide" id="s1" checked aria-hidden="true">
+        <input type="radio" name="slide" id="s2" aria-hidden="true">
+        <input type="radio" name="slide" id="s3" aria-hidden="true">
+
+        <div class="slides">
+          <!-- SLIDE 1 -->
+          <figure class="slide">
+            <img src="https://picsum.photos/1600/900?random=11" alt="Hero Bild 1 – Platzhalter" />
+          </figure>
+
+          <!-- SLIDE 2 -->
+          <figure class="slide">
+            <img src="https://picsum.photos/1600/900?random=12" alt="Hero Bild 2 – Platzhalter" />
+          </figure>
+
+          <!-- SLIDE 3 -->
+          <figure class="slide">
+            <img src="https://picsum.photos/1600/900?random=13" alt="Hero Bild 3 – Platzhalter" />
+          </figure>
+        </div>
+
+        <!-- Text-Overlay über den Bildern -->
+        <div class="hero-caption">
+          <h2>Klare Botschaft. Starker Auftritt.</h2>
+          <p>Ein moderner OnePager als saubere Basis für Ihr Projekt – responsiv, schnell und zugänglich.</p>
+          <a class="btn" href="#grid">Jetzt entdecken</a>
+        </div>
+
+        <!-- Manuelle Steuerung (Dots) -->
+        <div class="hero-dots" role="tablist" aria-label="Hero-Slider-Steuerung">
+          <label for="s1" role="tab" aria-controls="s1" aria-label="Slide 1"></label>
+          <label for="s2" role="tab" aria-controls="s2" aria-label="Slide 2"></label>
+          <label for="s3" role="tab" aria-controls="s3" aria-label="Slide 3"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         CONTENT-GRID (2 Reihen x 3 Spalten)
+         - Jedes Item: Bild, Kurztext, Link
+    ======================================================== -->
+    <section id="grid" class="section section-light">
+      <div class="container">
+        <header class="section-head">
+          <h2>Leistungen im Überblick</h2>
+          <p>Sechs kompakte Kacheln – ideal für Features, Produkte oder Services.</p>
+        </header>
+
+        <div class="grid-2x3">
+          <!-- ITEM 1 -->
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=21" alt="Platzhalter Bild 1" />
+            <div class="card-body">
+              <h3>Feature Eins</h3>
+              <p>Kurz und klar beschrieben. Nutzen Sie diesen Text, um den Mehrwert zu erklären.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <!-- ITEM 2 -->
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=22" alt="Platzhalter Bild 2" />
+            <div class="card-body">
+              <h3>Feature Zwei</h3>
+              <p>Responsives Grid mit moderner Typografie und angenehmen Abständen.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <!-- ITEM 3 -->
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=23" alt="Platzhalter Bild 3" />
+            <div class="card-body">
+              <h3>Feature Drei</h3>
+              <p>Platz für einen kurzen Nutzen- oder Anwendungsfall.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <!-- ITEM 4 -->
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=24" alt="Platzhalter Bild 4" />
+            <div class="card-body">
+              <h3>Feature Vier</h3>
+              <p>Einheitlicher Look dank Variablen und einfacher Komponenten.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <!-- ITEM 5 -->
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=25" alt="Platzhalter Bild 5" />
+            <div class="card-body">
+              <h3>Feature Fünf</h3>
+              <p>Skalierbar: vom Smartphone bis zum großen Desktop.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+
+          <!-- ITEM 6 -->
+          <article class="card">
+            <img src="https://picsum.photos/600/400?random=26" alt="Platzhalter Bild 6" />
+            <div class="card-body">
+              <h3>Feature Sechs</h3>
+              <p>Saubere Semantik mit <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code> &amp; Co.</p>
+              <a href="#" class="card-link">Mehr erfahren</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         VIDEO-SEKTION (YouTube-Embed, austauschbar)
+    ======================================================== -->
+    <section id="video" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>Imagefilm / Video</h2>
+          <p>Ersetzen Sie den Embed-Link später durch Ihr eigenes Video.</p>
+        </header>
+
+        <!-- Responsive 16:9 Wrapper -->
+        <div class="video-wrapper">
+          <iframe
+            class="video-iframe"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="YouTube Video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         TEAM-SEKTION – 3 Teammitglieder
+         - Bild, Name, Rolle, kurze Beschreibung
+    ======================================================== -->
+    <section id="team" class="section section-light">
+      <div class="container">
+        <header class="section-head">
+          <h2>Unser Team</h2>
+          <p>Kompetent, nahbar und motiviert – lernen Sie uns kennen.</p>
+        </header>
+
+        <div class="team-grid">
+          <!-- Member 1 -->
+          <article class="team-card">
+            <img src="https://picsum.photos/400/400?random=31" alt="Teammitglied 1 – Porträt" />
+            <div class="team-body">
+              <h3>Alex Müller</h3>
+              <p class="role">Projektleitung</p>
+              <p>Koordiniert Abläufe, hält Deadlines im Blick und sorgt für klare Kommunikation.</p>
+            </div>
+          </article>
+
+          <!-- Member 2 -->
+          <article class="team-card">
+            <img src="https://picsum.photos/400/400?random=32" alt="Teammitglied 2 – Porträt" />
+            <div class="team-body">
+              <h3>Sam Schneider</h3>
+              <p class="role">Design & UX</p>
+              <p>Verantwortlich für Interface, Markenbild und ein zugängliches Nutzererlebnis.</p>
+            </div>
+          </article>
+
+          <!-- Member 3 -->
+          <article class="team-card">
+            <img src="https://picsum.photos/400/400?random=33" alt="Teammitglied 3 – Porträt" />
+            <div class="team-body">
+              <h3>Robin Fischer</h3>
+              <p class="role">Entwicklung</p>
+              <p>Realisiert schnelle, robuste Frontends auf Basis moderner Webstandards.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         KONTAKTFORMULAR – Name, E-Mail, Nachricht + Button
+         (ohne Backend – als Vorlage)
+    ======================================================== -->
+    <section id="kontakt" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>Kontakt</h2>
+          <p>Schreiben Sie uns – wir freuen uns auf Ihre Nachricht.</p>
+        </header>
+
+        <form class="contact-form" action="#" method="post">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Ihr Name" required>
+          </div>
+
+          <div class="form-row">
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="name@beispiel.de" required>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Nachricht</label>
+            <textarea id="message" name="message" rows="6" placeholder="Ihre Nachricht …" required></textarea>
+          </div>
+
+          <button class="btn" type="submit">Nachricht senden</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER – Wiederholung der Navigation + Impressum/Datenschutz
+  ========================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <nav class="footer-nav" aria-label="Fußnavigation">
+        <ul class="nav-list">
+          <li><a href="#hero">Hero</a></li>
+          <li><a href="#grid">Leistungen</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <ul class="legal">
+        <li><a href="https://example.com/impressum" target="_blank" rel="noopener">Impressum</a></li>
+        <li><a href="https://example.com/datenschutz" target="_blank" rel="noopener">Datenschutz</a></li>
+      </ul>
+      <p class="copy">© <span id="year"></span> Ihre Marke. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- Kleines Inline-Script NUR für dynamische Jahreszahl (optional) -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
