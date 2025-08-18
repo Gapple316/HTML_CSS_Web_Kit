@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Einfacher Onepager</title>
+  <style>
+    /* --- Basis --- */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; color: #333; background: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: #0b57d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    section { padding: 56px 0; }
+
+    /* --- Kopfbereich / Navigation --- */
+    header { border-bottom: 1px solid #e6e6e6; background: #fff; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+    .brand { font-weight: 700; }
+    .site-nav { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* --- Hero --- */
+    .hero { padding: 40px 0; }
+    .hero-figure { position: relative; }
+    .hero-figure img { width: 100%; height: 420px; object-fit: cover; border-radius: 8px; }
+    .hero-text { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; background: rgba(255,255,255,.9); padding: 16px 20px; border-radius: 8px; }
+    h1 { margin: 0 0 8px; font-size: 2rem; line-height: 1.2; }
+
+    /* --- Überschriften / Hilfstexte --- */
+    h2, h3 { margin: 0 0 12px; line-height: 1.25; }
+    .lead { color: #666; margin-bottom: 20px; }
+
+    /* --- Produkte --- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .card { border: 1px solid #e6e6e6; border-radius: 8px; background: #fff; overflow: hidden; }
+    .card img { width: 100%; height: 160px; object-fit: cover; border-bottom: 1px solid #e6e6e6; }
+    .card-body { padding: 12px; }
+    .card-body h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .card-body p { margin: 0 0 8px; }
+    .card-body a { font-weight: 600; }
+
+    /* --- Team --- */
+    .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .member { text-align: center; border: 1px solid #e6e6e6; border-radius: 8px; padding: 16px; background: #fff; }
+    .member img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 10px; }
+
+    /* --- Kontakt --- */
+    form { display: grid; gap: 12px; }
+    label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+    input, textarea { width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 6px; font: inherit; }
+    textarea { min-height: 120px; resize: vertical; }
+    .btn { display: inline-block; padding: 10px 14px; border: 1px solid #111; border-radius: 6px; background: #111; color: #fff; font-weight: 600; cursor: pointer; }
+    .btn:hover { filter: brightness(1.05); }
+
+    /* --- Footer --- */
+    footer { border-top: 1px solid #e6e6e6; background: #f7f7f7; padding: 24px 0; font-size: 14px; color: #666; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .footer-nav { margin: 0; padding: 0; list-style: none; display: flex; gap: 12px; flex-wrap: wrap; }
+    .footer-nav a { color: inherit; }
+
+    /* --- Kleinere Bildschirme --- */
+    @media (max-width: 600px) {
+      .hero-figure img { height: 300px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Kopf / Navigation -->
+  <header>
+    <div class="wrap header-inner">
+      <div class="brand">Ihre Marke</div>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <a href="#hero">Start</a>
+        <a href="#produkte">Produkte</a>
+        <a href="#team">Team</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="wrap">
+      <figure class="hero-figure">
+        <img src="https://placehold.co/1600x600?text=Hero+Bild" alt="Hero Platzhalter" />
+        <figcaption class="hero-text">
+          <h1>Starke Überschrift für Ihren Auftritt</h1>
+          <p class="lead">Kurzer, prägnanter Absatz, der Ihr Angebot in einem Satz erklärt.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Produkte -->
+  <section id="produkte">
+    <div class="wrap">
+      <h3>Produkte</h3>
+      <p class="lead">Unsere beliebtesten Angebote im Überblick.</p>
+      <div class="grid">
+        <article class="card">
+          <img src="https://placehold.co/600x400?text=Produkt+1" alt="Produkt 1" />
+          <div class="card-body">
+            <h3>Produkt Eins</h3>
+            <p>Kurze Beschreibung des Produkts. Klar, knapp, verständlich.</p>
+            <a href="#">Mehr erfahren</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://placehold.co/600x400?text=Produkt+2" alt="Produkt 2" />
+          <div class="card-body">
+            <h3>Produkt Zwei</h3>
+            <p>Kurze Beschreibung des Produkts. Klar, knapp, verständlich.</p>
+            <a href="#">Mehr erfahren</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://placehold.co/600x400?text=Produkt+3" alt="Produkt 3" />
+          <div class="card-body">
+            <h3>Produkt Drei</h3>
+            <p>Kurze Beschreibung des Produkts. Klar, knapp, verständlich.</p>
+            <a href="#">Mehr erfahren</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://placehold.co/600x400?text=Produkt+4" alt="Produkt 4" />
+          <div class="card-body">
+            <h3>Produkt Vier</h3>
+            <p>Kurze Beschreibung des Produkts. Klar, knapp, verständlich.</p>
+            <a href="#">Mehr erfahren</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://placehold.co/600x400?text=Produkt+5" alt="Produkt 5" />
+          <div class="card-body">
+            <h3>Produkt Fünf</h3>
+            <p>Kurze Beschreibung des Produkts. Klar, knapp, verständlich.</p>
+            <a href="#">Mehr erfahren</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://placehold.co/600x400?text=Produkt+6" alt="Produkt 6" />
+          <div class="card-body">
+            <h3>Produkt Sechs</h3>
+            <p>Kurze Beschreibung des Produkts. Klar, knapp, verständlich.</p>
+            <a href="#">Mehr erfahren</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" aria-labelledby="team-title">
+    <div class="wrap">
+      <h2 id="team-title">Team</h2>
+      <p class="lead">Lernen Sie unser Team kennen.</p>
+      <div class="team">
+        <div class="member">
+          <img src="https://placehold.co/200x200?text=Alex" alt="Teammitglied Alex" />
+          <h3>Alex Muster</h3>
+          <p>Leitung</p>
+        </div>
+        <div class="member">
+          <img src="https://placehold.co/200x200?text=Sam" alt="Teammitglied Sam" />
+          <h3>Sam Beispiel</h3>
+          <p>Beratung</p>
+        </div>
+        <div class="member">
+          <img src="https://placehold.co/200x200?text=Taylor" alt="Teammitglied Taylor" />
+          <h3>Taylor Demo</h3>
+          <p>Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" aria-labelledby="kontakt-title">
+    <div class="wrap">
+      <h2 id="kontakt-title">Kontakt</h2>
+      <p class="lead">Schreiben Sie uns – wir melden uns zeitnah bei Ihnen.</p>
+      <form action="#" method="post">
+        <div>
+          <label for="name">Ihr Name</label>
+          <input id="name" name="name" type="text" placeholder="Vor- und Nachname" required />
+        </div>
+        <div>
+          <label for="email">E‑Mail</label>
+          <input id="email" name="email" type="email" placeholder="name@example.com" required />
+        </div>
+        <div>
+          <label for="nachricht">Nachricht</label>
+          <textarea id="nachricht" name="message" placeholder="Wie können wir helfen?" required></textarea>
+        </div>
+        <button class="btn" type="submit">Senden</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer mit Menü, Impressum & Datenschutz -->
+  <footer>
+    <div class="wrap footer-inner">
+      <small>© 2025 Ihre Marke</small>
+      <ul class="footer-nav" aria-label="Footer Menü">
+        <li><a href="#hero">Start</a></li>
+        <li><a href="#produkte">Produkte</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Datenschutz</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
